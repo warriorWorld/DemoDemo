@@ -1,0 +1,24 @@
+package com.insightsurfface.demodemo.business.main;
+
+import android.content.Context;
+
+public class MainPresenter implements MainContract.Persenter {
+    private Context mContext;
+    private MainContract.View mView;
+
+    public MainPresenter(Context context, MainContract.View view) {
+        this.mContext = context;
+        this.mView = view;
+    }
+
+    @Override
+    public void getDemoList() {
+        mView.displayList(new String[]{"冒泡排序"});
+    }
+
+    @Override
+    public void onDestroy() {
+        mView = null;
+        mContext = null;
+    }
+}

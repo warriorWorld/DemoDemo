@@ -47,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         contentViewGroup.setFitsSystemWindows(fitSystemWindow);
     }
 
-    protected abstract int initUI();
+    protected abstract void initUI();
 
     protected abstract int getLayoutId();
 }
