@@ -1,5 +1,6 @@
 package com.insightsurfface.demodemo.business.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -8,6 +9,7 @@ import android.view.animation.LayoutAnimationController;
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
+import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.listener.OnRecycleItemClickListener;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,10 +51,17 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 mAdapter = new MainAdapter(this);
                 mAdapter.setList(demoList);
                 mAdapter.setOnRecycleItemClickListener(new OnRecycleItemClickListener() {
+
                     @Override
                     public void onItemClick(int position) {
+                        Intent intent = null;
                         switch (position) {
-
+                            case 0:
+                                intent = new Intent(MainActivity.this, BubblingActivity.class);
+                                break;
+                        }
+                        if (null != intent) {
+                            startActivity(intent);
                         }
                     }
                 });
