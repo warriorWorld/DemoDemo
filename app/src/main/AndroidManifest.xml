@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".business.bubbling.BubblingActivity"></activity>
         <activity android:name=".business.builder.BuilderActivity"></activity>
+        <activity android:name=".business.touchevent.TouchEventActivity"></activity>
     </application>
 
 </manifest>
