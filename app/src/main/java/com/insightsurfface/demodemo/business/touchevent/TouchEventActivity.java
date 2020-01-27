@@ -1,14 +1,18 @@
 package com.insightsurfface.demodemo.business.touchevent;
 
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.base.BaseActivity;
+import com.insightsurfface.demodemo.listener.TouchListener;
 
 public class TouchEventActivity extends BaseActivity implements View.OnClickListener {
     private TouchLayout touchLayout;
-    private Button testBtn;
+    private TouchButton testBtn;
+    private TextView logTv;
 
     /**
      * Handle button click events<br />
@@ -26,8 +30,39 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initUI() {
         touchLayout = (TouchLayout) findViewById(R.id.touch_layout);
-        testBtn = (Button) findViewById(R.id.test_btn);
+        logTv = findViewById(R.id.log_tv);
+        touchLayout.setTouchListener(new TouchListener() {
+            @Override
+            public void dispatchTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntouchLayout   dispatchTouchEvent:  " + event.getAction());
+            }
 
+            @Override
+            public void onInterceptTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntouchLayout   onInterceptTouchEvent:  " + event.getAction());
+            }
+
+            @Override
+            public void onTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntouchLayout   onTouchEvent:  " + event.getAction());
+            }
+        });
+        testBtn = findViewById(R.id.test_btn);
+        testBtn.setTouchListener(new TouchListener() {
+            @Override
+            public void dispatchTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntestBtn   dispatchTouchEvent:  " + event.getAction());
+            }
+
+            @Override
+            public void onInterceptTouchEvent(MotionEvent event) {
+            }
+
+            @Override
+            public void onTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntestBtn   onTouchEvent:  " + event.getAction());
+            }
+        });
         testBtn.setOnClickListener(this);
     }
 

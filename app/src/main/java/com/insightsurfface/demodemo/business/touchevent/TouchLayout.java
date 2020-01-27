@@ -5,9 +5,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
+import com.insightsurfface.demodemo.listener.TouchListener;
 import com.insightsurfface.demodemo.utils.Logger;
 
 public class TouchLayout extends RelativeLayout {
+    private TouchListener mTouchListener;
+
     public TouchLayout(Context context) {
         super(context);
     }
@@ -23,18 +26,31 @@ public class TouchLayout extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Logger.d("TouchLayout  dispatchTouchEvent:  " + ev.getAction());
+        if (null != mTouchListener) {
+            mTouchListener.dispatchTouchEvent(ev);
+        }
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Logger.d("TouchLayout  onInterceptTouchEvent:  " + ev.getAction());
+        if (null != mTouchListener) {
+            mTouchListener.onInterceptTouchEvent(ev);
+        }
         return super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Logger.d("TouchLayout  onTouchEvent:  " + event.getAction());
+        if (null != mTouchListener) {
+            mTouchListener.onTouchEvent(event);
+        }
         return super.onTouchEvent(event);
+    }
+
+    public void setTouchListener(TouchListener touchListener) {
+        mTouchListener = touchListener;
     }
 }
