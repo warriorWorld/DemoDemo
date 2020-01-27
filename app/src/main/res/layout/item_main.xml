@@ -9,8 +9,11 @@
     <TextView
         android:id="@+id/demo_tv"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/rect_white_c5"
         android:elevation="3dp"
         android:gravity="center"

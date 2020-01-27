@@ -10,6 +10,7 @@ import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
 import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
+import com.insightsurfface.demodemo.business.builder.BuilderActivity;
 import com.insightsurfface.demodemo.listener.OnRecycleItemClickListener;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,6 +59,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                         switch (position) {
                             case 0:
                                 intent = new Intent(MainActivity.this, BubblingActivity.class);
+                                break;
+                            case 1:
+                                intent = new Intent(MainActivity.this, BuilderActivity.class);
                                 break;
                         }
                         if (null != intent) {
