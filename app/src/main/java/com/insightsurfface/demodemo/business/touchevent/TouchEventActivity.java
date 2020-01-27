@@ -13,6 +13,8 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
     private TouchLayout touchLayout;
     private TouchButton testBtn;
     private TextView logTv;
+    private TouchScroll touchSv;
+    private View cleanV;
 
     /**
      * Handle button click events<br />
@@ -24,6 +26,8 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         if (v == testBtn) {
             // Handle clicks for testBtn
+        } else if (v == cleanV) {
+            logTv.setText("");
         }
     }
 
@@ -31,6 +35,24 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
     protected void initUI() {
         touchLayout = (TouchLayout) findViewById(R.id.touch_layout);
         logTv = findViewById(R.id.log_tv);
+        touchSv = findViewById(R.id.touch_sv);
+        cleanV = findViewById(R.id.clean_iv);
+        touchSv.setTouchListener(new TouchListener() {
+            @Override
+            public void dispatchTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntouchSv   dispatchTouchEvent:  " + event.getAction());
+            }
+
+            @Override
+            public void onInterceptTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntouchSv   onInterceptTouchEvent:  " + event.getAction());
+            }
+
+            @Override
+            public void onTouchEvent(MotionEvent event) {
+                logTv.setText(logTv.getText() + "\ntouchSv   onTouchEvent:  " + event.getAction());
+            }
+        });
         touchLayout.setTouchListener(new TouchListener() {
             @Override
             public void dispatchTouchEvent(MotionEvent event) {
@@ -64,6 +86,7 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
             }
         });
         testBtn.setOnClickListener(this);
+        cleanV.setOnClickListener(this);
     }
 
     @Override

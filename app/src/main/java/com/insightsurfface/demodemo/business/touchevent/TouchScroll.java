@@ -3,29 +3,29 @@ package com.insightsurfface.demodemo.business.touchevent;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.insightsurfface.demodemo.listener.TouchListener;
 import com.insightsurfface.demodemo.utils.Logger;
 
-public class TouchLayout extends LinearLayout {
+public class TouchScroll extends ScrollView {
     private TouchListener mTouchListener;
 
-    public TouchLayout(Context context) {
+    public TouchScroll(Context context) {
         super(context);
     }
 
-    public TouchLayout(Context context, AttributeSet attrs) {
+    public TouchScroll(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public TouchLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TouchScroll(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Logger.d("TouchLayout  dispatchTouchEvent:  " + ev.getAction());
+        Logger.d("TouchScroll  dispatchTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.dispatchTouchEvent(ev);
         }
@@ -34,7 +34,7 @@ public class TouchLayout extends LinearLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Logger.d("TouchLayout  onInterceptTouchEvent:  " + ev.getAction());
+        Logger.d("TouchScroll  onInterceptTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.onInterceptTouchEvent(ev);
         }
@@ -44,7 +44,7 @@ public class TouchLayout extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Logger.d("TouchLayout  onTouchEvent:  " + event.getAction());
+        Logger.d("TouchScroll  onTouchEvent:  " + event.getAction());
         if (null != mTouchListener) {
             mTouchListener.onTouchEvent(event);
         }
