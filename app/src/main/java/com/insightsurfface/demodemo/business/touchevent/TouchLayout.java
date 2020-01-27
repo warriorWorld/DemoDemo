@@ -38,8 +38,8 @@ public class TouchLayout extends LinearLayout {
         if (null != mTouchListener) {
             mTouchListener.onInterceptTouchEvent(ev);
         }
-//        return super.onInterceptTouchEvent(ev);
-        return true;
+        return super.onInterceptTouchEvent(ev);
+//        return true;
     }
 
     @Override

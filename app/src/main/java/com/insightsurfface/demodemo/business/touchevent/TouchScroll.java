@@ -38,8 +38,7 @@ public class TouchScroll extends ScrollView {
         if (null != mTouchListener) {
             mTouchListener.onInterceptTouchEvent(ev);
         }
-//        return super.onInterceptTouchEvent(ev);
-        return true;
+        return super.onInterceptTouchEvent(ev);
     }
 
     @Override
