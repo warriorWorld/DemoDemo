@@ -9,6 +9,7 @@ import com.insightsurfface.demodemo.listener.TouchListener;
 import com.insightsurfface.demodemo.utils.Logger;
 
 public class TouchLayout extends LinearLayout {
+    private final String TAG="中层";
     private TouchListener mTouchListener;
 
     public TouchLayout(Context context) {
@@ -25,7 +26,7 @@ public class TouchLayout extends LinearLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Logger.d("TouchLayout  dispatchTouchEvent:  " + ev.getAction());
+        Logger.d(TAG+"  dispatchTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.dispatchTouchEvent(ev);
         }
@@ -34,7 +35,7 @@ public class TouchLayout extends LinearLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Logger.d("TouchLayout  onInterceptTouchEvent:  " + ev.getAction());
+        Logger.d(TAG+"  onInterceptTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.onInterceptTouchEvent(ev);
         }
@@ -44,11 +45,21 @@ public class TouchLayout extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Logger.d("TouchLayout  onTouchEvent:  " + event.getAction());
+        Logger.d(TAG+"  onTouchEvent:  " + event.getAction());
         if (null != mTouchListener) {
             mTouchListener.onTouchEvent(event);
         }
-        return super.onTouchEvent(event);
+//        return super.onTouchEvent(event);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                return false;
+            case MotionEvent.ACTION_UP:
+                return false;
+            default:
+                return true;
+        }
     }
 
     public void setTouchListener(TouchListener touchListener) {

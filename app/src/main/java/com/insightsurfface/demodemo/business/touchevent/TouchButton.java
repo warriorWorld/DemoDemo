@@ -9,6 +9,7 @@ import com.insightsurfface.demodemo.listener.TouchListener;
 import com.insightsurfface.demodemo.utils.Logger;
 
 public class TouchButton extends Button {
+    private final String TAG="最内层";
     private TouchListener mTouchListener;
 
     public TouchButton(Context context) {
@@ -25,7 +26,7 @@ public class TouchButton extends Button {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Logger.d("TouchLayout  dispatchTouchEvent:  " + ev.getAction());
+        Logger.d(TAG+"  dispatchTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.dispatchTouchEvent(ev);
         }
@@ -34,11 +35,21 @@ public class TouchButton extends Button {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Logger.d("TouchButton  onTouchEvent:  " + event.getAction());
+        Logger.d(TAG+"  onTouchEvent:  " + event.getAction());
         if (null != mTouchListener) {
             mTouchListener.onTouchEvent(event);
         }
-        return super.onTouchEvent(event);
+//        return super.onTouchEvent(event);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                return false;
+            case MotionEvent.ACTION_MOVE:
+                return false;
+            case MotionEvent.ACTION_UP:
+                return false;
+            default:
+                return true;
+        }
     }
 
     public void setTouchListener(TouchListener touchListener) {

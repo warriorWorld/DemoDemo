@@ -9,6 +9,7 @@ import com.insightsurfface.demodemo.listener.TouchListener;
 import com.insightsurfface.demodemo.utils.Logger;
 
 public class TouchScroll extends ScrollView {
+    private final String TAG="最外层";
     private TouchListener mTouchListener;
 
     public TouchScroll(Context context) {
@@ -25,7 +26,7 @@ public class TouchScroll extends ScrollView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Logger.d("TouchScroll  dispatchTouchEvent:  " + ev.getAction());
+        Logger.d(TAG+"  dispatchTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.dispatchTouchEvent(ev);
         }
@@ -34,7 +35,7 @@ public class TouchScroll extends ScrollView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Logger.d("TouchScroll  onInterceptTouchEvent:  " + ev.getAction());
+        Logger.d(TAG+"  onInterceptTouchEvent:  " + ev.getAction());
         if (null != mTouchListener) {
             mTouchListener.onInterceptTouchEvent(ev);
         }
@@ -43,7 +44,7 @@ public class TouchScroll extends ScrollView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Logger.d("TouchScroll  onTouchEvent:  " + event.getAction());
+        Logger.d(TAG+"  onTouchEvent:  " + event.getAction());
         if (null != mTouchListener) {
             mTouchListener.onTouchEvent(event);
         }

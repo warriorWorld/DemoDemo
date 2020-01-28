@@ -85,7 +85,7 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
                 logTv.setText(logTv.getText() + "\ntestBtn   onTouchEvent:  " + event.getAction());
             }
         });
-        testBtn.setOnClickListener(this);
+//        testBtn.setOnClickListener(this);
         cleanV.setOnClickListener(this);
     }
 
