@@ -36,7 +36,7 @@ public class EarningsCalculatorDialog1 extends Dialog implements View.OnClickLis
     private Button cleanBtn;
     protected TextView invest_money_explain;
     private OnEditResultListener mOnEditResultListener;
-    protected float earning;
+    protected double earning;
 
     public void setOnEditResultListener(OnEditResultListener onEditResultListener) {
         mOnEditResultListener = onEditResultListener;

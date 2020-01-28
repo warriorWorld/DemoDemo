@@ -89,22 +89,22 @@ public class EarningsCalculatorDialog5 extends EarningsCalculatorDialog1 {
 
     @Override
     protected void calculateEarning() {
+        EarningCalculator calculator = new EarningCalculator();
         switch (mRepayType) {
             case ONE_OFF:
-                super.calculateEarning();
+                calculator.setStrategy(new OneoffStrategy());
+                selectedTerm = Integer.valueOf(investPeriodEt.getText().toString());
                 break;
             case AVERAGE_CAPITAL:
-                float couponRate = 0f;
-                if (!TextUtils.isEmpty(raiseInterestEt.getText().toString().trim())) {
-                    couponRate = getEtFloat(raiseInterestEt);
-                }
+                calculator.setStrategy(new AverageCapitalStrategy());
                 selectedTerm = Integer.valueOf(investPeriodEt1.getText().toString());
-                earning = (getEtFloat(investMoneyEt) * (selectedTerm + 1) / 2) * ((getEtFloat(interestRateEt) + couponRate) / 100f) * 30f / 365f;
-                if (TextUtils.isEmpty(raiseInterestEt.getText().toString())) {
-                    raiseInterestEt.setText("0.00");
-                }
                 break;
         }
+        float couponRate = 0f;
+        if (!TextUtils.isEmpty(raiseInterestEt.getText().toString().trim())) {
+            couponRate = getEtFloat(raiseInterestEt);
+        }
+        earning = calculator.calculate(getEtFloat(investMoneyEt), selectedTerm, getEtFloat(interestRateEt) + couponRate);
     }
 
     @Override
