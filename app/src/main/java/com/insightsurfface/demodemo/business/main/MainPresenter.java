@@ -13,7 +13,7 @@ public class MainPresenter implements MainContract.Persenter {
 
     @Override
     public void getDemoList() {
-        mView.displayList(new String[]{"冒泡排序", "建造者模式","触摸事件传递"});
+        mView.displayList(new String[]{"冒泡排序", "建造者模式","触摸事件传递","策略模式"});
     }
 
     @Override
