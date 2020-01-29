@@ -20,6 +20,7 @@
         <activity android:name=".business.builder.BuilderActivity"></activity>
         <activity android:name=".business.touchevent.TouchEventActivity"></activity>
         <activity android:name=".business.strategy.StrategyActivity"></activity>
+        <activity android:name=".business.state.StateActivity"></activity>
     </application>
 
 </manifest>

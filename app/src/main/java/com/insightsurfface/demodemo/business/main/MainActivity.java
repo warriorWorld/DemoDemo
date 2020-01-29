@@ -11,6 +11,7 @@ import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
 import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.business.builder.BuilderActivity;
+import com.insightsurfface.demodemo.business.state.StateActivity;
 import com.insightsurfface.demodemo.business.strategy.StrategyActivity;
 import com.insightsurfface.demodemo.business.touchevent.TouchEventActivity;
 import com.insightsurfface.demodemo.listener.OnRecycleItemClickListener;
@@ -70,6 +71,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 3:
                                 intent= new Intent(MainActivity.this, StrategyActivity.class);
+                                break;
+                            case 4:
+                                intent= new Intent(MainActivity.this, StateActivity.class);
                                 break;
                         }
                         if (null != intent) {
