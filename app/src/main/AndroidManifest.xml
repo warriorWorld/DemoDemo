@@ -21,6 +21,7 @@
         <activity android:name=".business.touchevent.TouchEventActivity"></activity>
         <activity android:name=".business.strategy.StrategyActivity"></activity>
         <activity android:name=".business.state.StateActivity"></activity>
+        <activity android:name=".business.responsibilitychain.ResponsibilityChainActivity"></activity>
     </application>
 
 </manifest>
