@@ -11,6 +11,7 @@ import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
 import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.business.builder.BuilderActivity;
+import com.insightsurfface.demodemo.business.fragmentlife.FragmentLifePeriodActivity;
 import com.insightsurfface.demodemo.business.responsibilitychain.ResponsibilityChainActivity;
 import com.insightsurfface.demodemo.business.state.StateActivity;
 import com.insightsurfface.demodemo.business.strategy.StrategyActivity;
@@ -78,6 +79,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 5:
                                 intent= new Intent(MainActivity.this, ResponsibilityChainActivity.class);
+                                break;
+                            case 6:
+                                intent= new Intent(MainActivity.this, FragmentLifePeriodActivity.class);
                                 break;
                         }
                         if (null != intent) {

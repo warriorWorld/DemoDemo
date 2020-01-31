@@ -22,6 +22,7 @@
         <activity android:name=".business.strategy.StrategyActivity"></activity>
         <activity android:name=".business.state.StateActivity"></activity>
         <activity android:name=".business.responsibilitychain.ResponsibilityChainActivity"></activity>
+        <activity android:name=".business.fragmentlife.FragmentLifePeriodActivity"></activity>
     </application>
 
 </manifest>
