@@ -13,6 +13,7 @@ import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.business.builder.BuilderActivity;
 import com.insightsurfface.demodemo.business.command.CommandActivity;
 import com.insightsurfface.demodemo.business.fragmentlife.FragmentLifePeriodActivity;
+import com.insightsurfface.demodemo.business.observer.ObserverActivity;
 import com.insightsurfface.demodemo.business.responsibilitychain.ResponsibilityChainActivity;
 import com.insightsurfface.demodemo.business.state.StateActivity;
 import com.insightsurfface.demodemo.business.strategy.StrategyActivity;
@@ -86,6 +87,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 7:
                                 intent= new Intent(MainActivity.this, CommandActivity.class);
+                                break;
+                            case 8:
+                                intent= new Intent(MainActivity.this, ObserverActivity.class);
                                 break;
                         }
                         if (null != intent) {

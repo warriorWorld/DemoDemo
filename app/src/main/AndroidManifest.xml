@@ -24,6 +24,7 @@
         <activity android:name=".business.responsibilitychain.ResponsibilityChainActivity"></activity>
         <activity android:name=".business.fragmentlife.FragmentLifePeriodActivity"></activity>
         <activity android:name=".business.command.CommandActivity"></activity>
+        <activity android:name=".business.observer.ObserverActivity"></activity>
     </application>
 
 </manifest>

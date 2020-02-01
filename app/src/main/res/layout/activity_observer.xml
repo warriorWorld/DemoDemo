@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".business.main.MainActivity">
+
+    <EditText
+        android:id="@+id/meter_et"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/meter_tv"
+        app:layout_constraintTop_toTopOf="parent"></EditText>
+
+    <TextView
+        android:id="@+id/meter_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="米"
+        app:layout_constraintBaseline_toBaselineOf="@+id/meter_et"
+        app:layout_constraintLeft_toRightOf="@+id/meter_et"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <EditText
+        android:id="@+id/feet_et"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/feet_tv"
+        app:layout_constraintTop_toBottomOf="@+id/meter_et"></EditText>
+
+    <TextView
+        android:id="@+id/feet_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英尺"
+        app:layout_constraintBaseline_toBaselineOf="@+id/feet_et"
+        app:layout_constraintLeft_toRightOf="@+id/feet_et"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <EditText
+        android:id="@+id/inch_et"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/inch_tv"
+        app:layout_constraintTop_toBottomOf="@+id/feet_et"></EditText>
+
+    <TextView
+        android:id="@+id/inch_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英寸"
+        app:layout_constraintBaseline_toBaselineOf="@+id/inch_et"
+        app:layout_constraintLeft_toRightOf="@+id/inch_et"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
