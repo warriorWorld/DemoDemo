@@ -25,6 +25,7 @@
         <activity android:name=".business.fragmentlife.FragmentLifePeriodActivity"></activity>
         <activity android:name=".business.command.CommandActivity"></activity>
         <activity android:name=".business.observer.ObserverActivity"></activity>
+        <activity android:name=".business.template.TemplateActivity"></activity>
     </application>
 
 </manifest>
