@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".business.main.MainActivity">
+
+    <TextView
+        android:id="@+id/visitor_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="访问者模式是一种将数据结构与数据操作相分离的模式\n使用场景\n1: 对象结构比较稳定，但经常需要在此对象结构上定义新的操作\n2: 需要对一个对象结构中的对象进行很多不同的且不相关的操作，而需要避免这些操作污染这些对象的类，也不希望在增加新操作时修改这些类。\n"
+        android:textColor="@color/main_text_color"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>

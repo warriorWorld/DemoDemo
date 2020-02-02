@@ -26,6 +26,7 @@
         <activity android:name=".business.command.CommandActivity"></activity>
         <activity android:name=".business.observer.ObserverActivity"></activity>
         <activity android:name=".business.template.TemplateActivity"></activity>
+        <activity android:name=".business.visitor.VisitorActivity"></activity>
     </application>
 
 </manifest>

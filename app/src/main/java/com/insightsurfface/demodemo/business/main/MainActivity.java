@@ -19,6 +19,7 @@ import com.insightsurfface.demodemo.business.state.StateActivity;
 import com.insightsurfface.demodemo.business.strategy.StrategyActivity;
 import com.insightsurfface.demodemo.business.template.TemplateActivity;
 import com.insightsurfface.demodemo.business.touchevent.TouchEventActivity;
+import com.insightsurfface.demodemo.business.visitor.VisitorActivity;
 import com.insightsurfface.demodemo.listener.OnRecycleItemClickListener;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -94,6 +95,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 9:
                                 intent= new Intent(MainActivity.this, TemplateActivity.class);
+                                break;
+                            case 10:
+                                intent= new Intent(MainActivity.this, VisitorActivity.class);
                                 break;
                         }
                         if (null != intent) {
