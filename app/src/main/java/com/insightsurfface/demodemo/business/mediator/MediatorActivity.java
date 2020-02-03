@@ -34,7 +34,7 @@ public class MediatorActivity extends BaseActivity implements View.OnClickListen
             zhangUser.sendMessage("Hi! Mr li!");
         } else if (v == liBtn) {
             // Handle clicks for liBtn
-            zhangUser.sendMessage("Hi! Mr zhang!");
+            liUser.sendMessage("Hi! Mr zhang!");
         }
     }
 

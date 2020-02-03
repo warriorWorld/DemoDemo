@@ -9,6 +9,7 @@ import android.view.animation.LayoutAnimationController;
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
+import com.insightsurfface.demodemo.business.agency.AgencyActivity;
 import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.business.builder.BuilderActivity;
 import com.insightsurfface.demodemo.business.command.CommandActivity;
@@ -102,6 +103,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 11:
                                 intent= new Intent(MainActivity.this, MediatorActivity.class);
+                                break;
+                            case 12:
+                                intent= new Intent(MainActivity.this, AgencyActivity.class);
                                 break;
                         }
                         if (null != intent) {
