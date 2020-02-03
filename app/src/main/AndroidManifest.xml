@@ -27,6 +27,7 @@
         <activity android:name=".business.observer.ObserverActivity"></activity>
         <activity android:name=".business.template.TemplateActivity"></activity>
         <activity android:name=".business.visitor.VisitorActivity"></activity>
+        <activity android:name=".business.mediator.MediatorActivity"></activity>
     </application>
 
 </manifest>

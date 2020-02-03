@@ -7,6 +7,7 @@ import java.util.Observer;
 
 public class FeetObserver implements Observer {
     private EditText mEditText;
+    public double multiple = 304.8d;
 
     public FeetObserver(EditText editText) {
         this.mEditText = editText;
@@ -14,9 +15,9 @@ public class FeetObserver implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (((ObserverBean) arg).getObserverEt()==mEditText){
+        if (((ObserverBean) arg).getObserverEt() == mEditText) {
             return;
         }
-        mEditText.setText((((ObserverBean) arg).getNum() / 304.8d) + "");
+        mEditText.setText((((ObserverBean) arg).getNum() / multiple) + "");
     }
 }
