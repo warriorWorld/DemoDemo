@@ -12,13 +12,16 @@ import androidx.annotation.Nullable;
 public class TemplateActivity extends BaseActivity implements View.OnClickListener {
     private Button teaBtn;
     private Button milkyTeaBtn;
+    private Button decoratorBtn;
     private MakeTeaAbstract teaMaker, milkyTeaMaker;
+    private MakeTeaDecorator mMakeTeaDecorator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        teaMaker=new MakeTea(this);
-        milkyTeaMaker=new MakeMilkyTea(this);
+        teaMaker = new MakeTea(this);
+        milkyTeaMaker = new MakeMilkyTea(this);
+        mMakeTeaDecorator = new MakeTeaDecorator(this, milkyTeaMaker);
     }
 
     /**
@@ -35,6 +38,8 @@ public class TemplateActivity extends BaseActivity implements View.OnClickListen
         } else if (v == milkyTeaBtn) {
             // Handle clicks for milkyTeaBtn
             milkyTeaMaker.makeTea();
+        } else if (v == decoratorBtn) {
+            mMakeTeaDecorator.makeTea();
         }
     }
 
@@ -42,7 +47,9 @@ public class TemplateActivity extends BaseActivity implements View.OnClickListen
     protected void initUI() {
         teaBtn = (Button) findViewById(R.id.tea_btn);
         milkyTeaBtn = (Button) findViewById(R.id.milky_tea_btn);
+        decoratorBtn = findViewById(R.id.decorator_btn);
 
+        decoratorBtn.setOnClickListener(this);
         teaBtn.setOnClickListener(this);
         milkyTeaBtn.setOnClickListener(this);
     }
