@@ -29,6 +29,6 @@
         <activity android:name=".business.visitor.VisitorActivity"></activity>
         <activity android:name=".business.mediator.MediatorActivity"></activity>
         <activity android:name=".business.agency.AgencyActivity"></activity>
+        <activity android:name=".business.assembly.AssemblyActivity"></activity>
     </application>
-
 </manifest>
