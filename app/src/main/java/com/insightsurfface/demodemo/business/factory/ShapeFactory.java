@@ -2,13 +2,19 @@ package com.insightsurfface.demodemo.business.factory;
 
 import android.content.Context;
 
-public class ShapeFactory {
-    public enum ShapeType {
-        CIRCLE,
-        SQUARE,
+import com.insightsurfface.demodemo.business.abstractfactory.AbstractFactory;
+import com.insightsurfface.demodemo.business.abstractfactory.Color;
+import com.insightsurfface.demodemo.business.abstractfactory.ColorFactory;
+
+public class ShapeFactory extends AbstractFactory {
+
+    @Override
+    public Color getColor(Context context, ColorFactory.ColorType colorType) {
+        return null;
     }
 
-    public static Shape getShape(Context context, ShapeType shapeType) {
+    @Override
+    public Shape getShape(Context context, ShapeType shapeType) {
         switch (shapeType) {
             case SQUARE:
                 return new Square(context);
@@ -17,5 +23,10 @@ public class ShapeFactory {
             default:
                 return null;
         }
+    }
+
+    public enum ShapeType {
+        CIRCLE,
+        SQUARE,
     }
 }

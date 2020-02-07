@@ -32,5 +32,6 @@
         <activity android:name=".business.assembly.AssemblyActivity"></activity>
         <activity android:name=".business.bridge.BridgeActivity"></activity>
         <activity android:name=".business.factory.FactoryActivity"></activity>
+        <activity android:name=".business.abstractfactory.AbstractFactoryActivity"></activity>
     </application>
 </manifest>

@@ -9,6 +9,7 @@ import android.view.animation.LayoutAnimationController;
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
+import com.insightsurfface.demodemo.business.abstractfactory.AbstractFactoryActivity;
 import com.insightsurfface.demodemo.business.agency.AgencyActivity;
 import com.insightsurfface.demodemo.business.assembly.AssemblyActivity;
 import com.insightsurfface.demodemo.business.bridge.BridgeActivity;
@@ -118,6 +119,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 15:
                                 intent= new Intent(MainActivity.this, FactoryActivity.class);
+                                break;
+                            case 16:
+                                intent= new Intent(MainActivity.this, AbstractFactoryActivity.class);
                                 break;
                         }
                         if (null != intent) {
