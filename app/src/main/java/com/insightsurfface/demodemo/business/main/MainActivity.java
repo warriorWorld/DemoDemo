@@ -15,6 +15,7 @@ import com.insightsurfface.demodemo.business.bridge.BridgeActivity;
 import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.business.builder.BuilderActivity;
 import com.insightsurfface.demodemo.business.command.CommandActivity;
+import com.insightsurfface.demodemo.business.factory.FactoryActivity;
 import com.insightsurfface.demodemo.business.fragmentlife.FragmentLifePeriodActivity;
 import com.insightsurfface.demodemo.business.mediator.MediatorActivity;
 import com.insightsurfface.demodemo.business.observer.ObserverActivity;
@@ -114,6 +115,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 14:
                                 intent= new Intent(MainActivity.this, BridgeActivity.class);
+                                break;
+                            case 15:
+                                intent= new Intent(MainActivity.this, FactoryActivity.class);
                                 break;
                         }
                         if (null != intent) {

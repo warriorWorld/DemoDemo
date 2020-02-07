@@ -15,7 +15,7 @@ public class MainPresenter implements MainContract.Persenter {
     public void getDemoList() {
         mView.displayList(new String[]{"冒泡排序", "建造者模式", "触摸事件传递", "策略模式",
                 "状态模式", "责任链模式", "Fragment生命周期", "命令模式", "观察者模式", "模板模式/装饰器模式",
-                "访问者模式", "中介者模式", "代理模式", "组合模式","桥接模式"});
+                "访问者模式", "中介者模式", "代理模式", "组合模式","桥接模式","工厂模式"});
     }
 
     @Override
