@@ -30,5 +30,6 @@
         <activity android:name=".business.mediator.MediatorActivity"></activity>
         <activity android:name=".business.agency.AgencyActivity"></activity>
         <activity android:name=".business.assembly.AssemblyActivity"></activity>
+        <activity android:name=".business.bridge.BridgeActivity"></activity>
     </application>
 </manifest>

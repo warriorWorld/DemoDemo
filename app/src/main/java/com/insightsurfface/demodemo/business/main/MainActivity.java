@@ -11,6 +11,7 @@ import com.insightsurfface.demodemo.adapter.MainAdapter;
 import com.insightsurfface.demodemo.base.BaseActivity;
 import com.insightsurfface.demodemo.business.agency.AgencyActivity;
 import com.insightsurfface.demodemo.business.assembly.AssemblyActivity;
+import com.insightsurfface.demodemo.business.bridge.BridgeActivity;
 import com.insightsurfface.demodemo.business.bubbling.BubblingActivity;
 import com.insightsurfface.demodemo.business.builder.BuilderActivity;
 import com.insightsurfface.demodemo.business.command.CommandActivity;
@@ -110,6 +111,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 13:
                                 intent= new Intent(MainActivity.this, AssemblyActivity.class);
+                                break;
+                            case 14:
+                                intent= new Intent(MainActivity.this, BridgeActivity.class);
                                 break;
                         }
                         if (null != intent) {
