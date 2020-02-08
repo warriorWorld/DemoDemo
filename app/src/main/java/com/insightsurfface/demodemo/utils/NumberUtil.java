@@ -110,6 +110,10 @@ public class NumberUtil {
         }
     }
 
+    public static String cutNum(double num) {
+        return cutNum(num + "");
+    }
+
     public static String cutNum(String num) {
         if (TextUtils.isEmpty(num)) {
             return "0";

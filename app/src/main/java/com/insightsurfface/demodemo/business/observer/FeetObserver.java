@@ -2,6 +2,8 @@ package com.insightsurfface.demodemo.business.observer;
 
 import android.widget.EditText;
 
+import com.insightsurfface.demodemo.utils.NumberUtil;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,6 +20,6 @@ public class FeetObserver implements Observer {
         if (((ObserverBean) arg).getObserverEt() == mEditText) {
             return;
         }
-        mEditText.setText((((ObserverBean) arg).getNum() / multiple) + "");
+        mEditText.setText(NumberUtil.cutNum(((ObserverBean) arg).getNum() / multiple));
     }
 }

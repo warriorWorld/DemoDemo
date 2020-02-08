@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.base.BaseActivity;
+import com.insightsurfface.demodemo.business.memoto.Caretaker;
+import com.insightsurfface.demodemo.business.memoto.LengthMemoto;
 
 import androidx.annotation.Nullable;
 
@@ -31,6 +33,18 @@ public class ObserverActivity extends BaseActivity {
         mNumberObservable.addObserver(mFeetObserver);
         mNumberObservable.addObserver(mInchObserver);
         mNumberObservable.addObserver(mMeterObserver);
+        LengthMemoto lengthMemoto = Caretaker.getLengthMemoto(this);
+        if (null != lengthMemoto) {
+            if (!TextUtils.isEmpty(lengthMemoto.getMeter())) {
+                meterEt.setText(lengthMemoto.getMeter());
+            }
+            if (!TextUtils.isEmpty(lengthMemoto.getInch())) {
+                inchEt.setText(lengthMemoto.getInch());
+            }
+            if (!TextUtils.isEmpty(lengthMemoto.getFeet())) {
+                feetEt.setText(lengthMemoto.getFeet());
+            }
+        }
     }
 
     @Override
@@ -52,10 +66,10 @@ public class ObserverActivity extends BaseActivity {
                 if (TextUtils.isEmpty(s.toString())) {
                     return;
                 }
-                if (!meterEt.isFocused()){
+                if (!meterEt.isFocused()) {
                     return;
                 }
-                ObserverBean item=new ObserverBean();
+                ObserverBean item = new ObserverBean();
                 item.setNum(Double.valueOf(s.toString()) * 1000d);
                 item.setObserverEt(meterEt);
                 mNumberObservable.numberChanged(item);
@@ -78,10 +92,10 @@ public class ObserverActivity extends BaseActivity {
                 if (TextUtils.isEmpty(s.toString())) {
                     return;
                 }
-                if (!feetEt.isFocused()){
+                if (!feetEt.isFocused()) {
                     return;
                 }
-                ObserverBean item=new ObserverBean();
+                ObserverBean item = new ObserverBean();
                 item.setNum(Double.valueOf(s.toString()) * 304.8d);
                 item.setObserverEt(feetEt);
                 mNumberObservable.numberChanged(item);
@@ -104,15 +118,22 @@ public class ObserverActivity extends BaseActivity {
                 if (TextUtils.isEmpty(s.toString())) {
                     return;
                 }
-                if (!inchEt.isFocused()){
+                if (!inchEt.isFocused()) {
                     return;
                 }
-                ObserverBean item=new ObserverBean();
+                ObserverBean item = new ObserverBean();
                 item.setNum(Double.valueOf(s.toString()) * 25.4d);
                 item.setObserverEt(inchEt);
                 mNumberObservable.numberChanged(item);
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Caretaker.saveMemoto(this, new LengthMemoto
+                (meterEt.getText().toString(), inchEt.getText().toString(), feetEt.getText().toString()));
     }
 
     @Override
