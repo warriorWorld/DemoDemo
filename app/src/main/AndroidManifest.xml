@@ -33,5 +33,6 @@
         <activity android:name=".business.bridge.BridgeActivity"></activity>
         <activity android:name=".business.factory.FactoryActivity"></activity>
         <activity android:name=".business.abstractfactory.AbstractFactoryActivity"></activity>
+        <activity android:name=".business.rxjava.RxjavaActivity"></activity>
     </application>
 </manifest>
