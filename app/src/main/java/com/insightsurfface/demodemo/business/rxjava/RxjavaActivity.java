@@ -35,7 +35,7 @@ public class RxjavaActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initUI();
-        Logger.setTag("rxjava");
+        Logger.setTag("rxtest");
 //        test();
     }
 
@@ -72,11 +72,14 @@ public class RxjavaActivity extends BaseActivity implements View.OnClickListener
                             @Override
                             public void onGetData(String data) {
                                 emitter.onNext(data);
+                                emitter.onComplete();
+                                Logger.d("getRawData success");
                             }
 
                             @Override
                             public void onError() {
                                 emitter.onError(new Exception("get raw data fail"));
+                                Logger.d("get raw data fail");
                             }
                         });
                     }
@@ -92,16 +95,20 @@ public class RxjavaActivity extends BaseActivity implements View.OnClickListener
                                 wxClient.getFaceCode(s, new WxClient.OnResponseListener() {
                                     @Override
                                     public void onGetData(String data) {
-                                        emitter.onNext(data);
+                                        if ("facecode".equals(data)) {
+                                            Logger.d("getFaceCode success");
+                                            emitter.onNext(data);
+                                            emitter.onComplete();
+                                        } else {
+                                            Logger.d("user canceled");
+                                            emitter.onError(new Exception("user canceled"));
+                                        }
                                     }
 
                                     @Override
                                     public void onError() {
-                                        if (wxClient.isUserCancel()) {
-                                            emitter.onError(new Exception("get face code fail"));
-                                        } else {
-                                            emitter.onError(new Exception("to scan pay"));
-                                        }
+                                        emitter.onError(new Exception("face code fail"));
+                                        Logger.d("face code fail");
                                     }
                                 });
                             }
@@ -116,8 +123,15 @@ public class RxjavaActivity extends BaseActivity implements View.OnClickListener
                             public void subscribe(final ObservableEmitter<String> emitter) throws Exception {
                                 wxClient.pay(s, new WxClient.OnResponseListener() {
                                     @Override
-                                    public void onGetData(String data) {
-                                        emitter.onNext(s);
+                                    public void onGetData(String data) throws PayException {
+                                        if (data.equals("orderId")) {
+                                            emitter.onNext(s);
+                                            emitter.onComplete();
+                                            Logger.d("pay success");
+                                        } else {
+                                            Logger.d("pay unknow");
+                                            throw new PayException(s);
+                                        }
                                     }
 
                                     @Override
@@ -129,25 +143,71 @@ public class RxjavaActivity extends BaseActivity implements View.OnClickListener
                         });
                     }
                 })
-                .flatMap(new Function<String, ObservableSource<String>>() {
+                .onErrorResumeNext(new Function<Throwable, ObservableSource<? extends String>>() {
                     @Override
-                    public ObservableSource<String> apply(final String s) throws Exception {
+                    public ObservableSource<? extends String> apply(final Throwable throwable) throws Exception {
+                        if (!PayException.class.isInstance(throwable)) {
+                            return Observable.create(new ObservableOnSubscribe<String>() {
+                                @Override
+                                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                                    Logger.d("onErrorResumeNext: " + throwable);
+                                    emitter.onError(throwable);
+                                }
+                            });
+                        }
                         return Observable.create(new ObservableOnSubscribe<String>() {
                             @Override
                             public void subscribe(final ObservableEmitter<String> emitter) throws Exception {
-                                wxClient.uploadRecord(s, new WxClient.OnResponseListener() {
+                                wxClient.queryPayed(throwable.getMessage(), new WxClient.OnResponseListener() {
                                     @Override
-                                    public void onGetData(String data) {
-                                        emitter.onNext(data);
+                                    public void onGetData(String data) throws PayException {
+                                        if (data.equals("success")) {
+                                            Logger.d("queryPayed success");
+                                            emitter.onNext("success");
+                                            emitter.onComplete();
+                                        } else {
+                                            Logger.d("queryPayed unknow");
+                                            throw new PayException("unknow");
+                                        }
                                     }
 
                                     @Override
-                                    public void onError() {
-
+                                    public void onError() throws PayException {
+                                        throw new PayException("unknow");
                                     }
                                 });
                             }
-                        });
+                        }).retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+                            @Override
+                            public ObservableSource<?> apply(Observable<Throwable> observable) throws Exception {
+                                return observable.delay(1, TimeUnit.SECONDS);
+                            }
+                        })
+                                .timeout(10, TimeUnit.SECONDS, Observable.create(new ObservableOnSubscribe<String>() {
+                                    @Override
+                                    public void subscribe(final ObservableEmitter<String> emitter) throws Exception {
+                                        wxClient.cancelOrder(new WxClient.OnResponseListener() {
+                                            @Override
+                                            public void onGetData(String data) throws PayException {
+                                                Logger.d("cancelOrder success");
+                                                emitter.onNext(data);
+                                                emitter.onComplete();
+                                            }
+
+                                            @Override
+                                            public void onError() throws PayException {
+                                                Logger.d("cancel fail");
+                                                throw new PayException("cancel fail");
+                                            }
+                                        });
+                                    }
+                                })).retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+                                    @Override
+                                    public ObservableSource<?> apply(Observable<Throwable> observable) throws Exception {
+                                        return observable.delay(1, TimeUnit.SECONDS);
+                                    }
+                                })
+                                .timeout(10, TimeUnit.SECONDS);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -159,17 +219,19 @@ public class RxjavaActivity extends BaseActivity implements View.OnClickListener
 
                     @Override
                     public void onNext(String s) {
-
+                        Logger.d("onNext: " + s);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        baseToast.showToast("出错了: " + e.getMessage());
+                        Logger.d("出错了: " + e.getMessage());
+                        testTv.setText("出错了: " + e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-                        baseToast.showToast("支付成功");
+                        Logger.d("支付成功");
+                        testTv.setText("支付成功");
                     }
                 });
     }
