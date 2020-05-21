@@ -3,26 +3,26 @@ package com.insightsurfface.demodemo.business.touchevent;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.insightsurfface.demodemo.listener.TouchListener;
 import com.insightsurfface.demodemo.utils.Logger;
 
-public class TouchLayout extends RelativeLayout {
-    private final String TAG = "中层";
+public class TouchRl extends RelativeLayout {
+    private final String TAG = "最外层";
     private TouchListener mTouchListener;
     private boolean isDispatch, isIntercept, isHandleDownEvent;
 
-    public TouchLayout(Context context) {
+    public TouchRl(Context context) {
         super(context);
     }
 
-    public TouchLayout(Context context, AttributeSet attrs) {
+    public TouchRl(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public TouchLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TouchRl(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -42,7 +42,6 @@ public class TouchLayout extends RelativeLayout {
             mTouchListener.onInterceptTouchEvent(ev);
         }
         return isIntercept;
-//        return true;
     }
 
     @Override
@@ -51,7 +50,6 @@ public class TouchLayout extends RelativeLayout {
         if (null != mTouchListener) {
             mTouchListener.onTouchEvent(event);
         }
-//        return super.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 return isHandleDownEvent;

@@ -12,16 +12,16 @@ import androidx.annotation.Nullable;
 public class AgencyActivity extends BaseActivity implements View.OnClickListener {
     private Button leopardBtn;
     private Button viBtn;
-private GameControl mGameControl;
-private Leopard mLeopard;
-private Vi mVi;
+    private GameControl mGameControl;
+    private Leopard mLeopard;
+    private Vi mVi;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGameControl=new GameControl(mLeopard);
-        mLeopard=new Leopard(this);
-        mVi=new Vi(this);
+        mGameControl = new GameControl(mLeopard);
+        mLeopard = new Leopard(this);
+        mVi = new Vi(this);
     }
 
     /**
