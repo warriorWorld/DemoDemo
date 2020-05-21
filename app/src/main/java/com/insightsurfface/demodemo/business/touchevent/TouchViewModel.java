@@ -5,14 +5,25 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class TouchViewModel extends ViewModel {
-    private MutableLiveData<Boolean> isDispatch0;
-    private MutableLiveData<Boolean> isDispatch1;
-    private MutableLiveData<Boolean> isDispatch2;
-    private MutableLiveData<Boolean> isIntercept0;
-    private MutableLiveData<Boolean> isIntercept1;
-    private MutableLiveData<Boolean> isHandleDownEvent0;
-    private MutableLiveData<Boolean> isHandleDownEvent1;
-    private MutableLiveData<Boolean> isHandleDownEvent2;
+    private MutableLiveData<Boolean> isDispatch0 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isDispatch1 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isDispatch2 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isIntercept0 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isIntercept1 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isHandleDownEvent0 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isHandleDownEvent1 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isHandleDownEvent2 = new MutableLiveData<>();
+
+    public void init() {
+        isDispatch0.setValue(false);
+        isDispatch1.setValue(false);
+        isDispatch2.setValue(false);
+        isIntercept0.setValue(false);
+        isIntercept1.setValue(false);
+        isHandleDownEvent0.setValue(false);
+        isHandleDownEvent1.setValue(false);
+        isHandleDownEvent2.setValue(false);
+    }
 
     public LiveData<Boolean> getIsDispatch0() {
         return isDispatch0;

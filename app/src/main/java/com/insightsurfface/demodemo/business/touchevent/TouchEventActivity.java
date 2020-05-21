@@ -7,9 +7,12 @@ import android.widget.TextView;
 
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.base.BaseActivity;
+import com.insightsurfface.demodemo.listener.OnDialogClickListener;
 import com.insightsurfface.demodemo.listener.TouchListener;
+import com.insightsurfface.demodemo.widget.dialog.TouchSettingsDialog;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -21,6 +24,7 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
     private View cleanV;
     private TextView stateTv;
     private TouchViewModel mTouchViewModel;
+    private TouchSettingsDialog mSettingsDialog;
 
     /**
      * Handle button click events<br />
@@ -30,11 +34,19 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
      */
     @Override
     public void onClick(View v) {
-        if (v == testBtn) {
-            // Handle clicks for testBtn
+        if (v == stateTv) {
+            showSettingsDialog();
         } else if (v == cleanV) {
             logTv.setText("");
         }
+    }
+
+    private void showSettingsDialog() {
+        if (null == mSettingsDialog) {
+            mSettingsDialog = new TouchSettingsDialog(this);
+            mSettingsDialog.setTouchViewModel(mTouchViewModel);
+        }
+        mSettingsDialog.show();
     }
 
     @Override
@@ -80,7 +92,7 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
         testBtn.setTouchListener(new TouchListener() {
             @Override
             public void dispatchTouchEvent(MotionEvent event) {
-                logTv.setText(logTv.getText() + "\n最下层   dispatchTouchEvent:  " + event.getAction());
+                logTv.setText(logTv.getText() + "\n最顶层   dispatchTouchEvent:  " + event.getAction());
             }
 
             @Override
@@ -89,17 +101,19 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onTouchEvent(MotionEvent event) {
-                logTv.setText(logTv.getText() + "\n最下层   onTouchEvent:  " + event.getAction());
+                logTv.setText(logTv.getText() + "\n最顶层   onTouchEvent:  " + event.getAction());
             }
         });
 //        testBtn.setOnClickListener(this);
         cleanV.setOnClickListener(this);
+        stateTv.setOnClickListener(this);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initVM();
+        mTouchViewModel.init();
     }
 
     private void initVM() {
@@ -107,55 +121,74 @@ public class TouchEventActivity extends BaseActivity implements View.OnClickList
         mTouchViewModel.getIsDispatch0().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                touchSv.setDispatch(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsDispatch1().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                touchLayout.setDispatch(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsDispatch2().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                testBtn.setDispatch(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsIntercept0().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                touchSv.setIntercept(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsIntercept1().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                touchLayout.setIntercept(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsHandleDownEvent0().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                touchSv.setHandleDownEvent(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsHandleDownEvent1().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                touchLayout.setHandleDownEvent(aBoolean);
+                refreshState();
             }
         });
         mTouchViewModel.getIsHandleDownEvent2().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-
+                testBtn.setHandleDownEvent(aBoolean);
+                refreshState();
             }
         });
     }
 
     private void refreshState() {
+        stateTv.setText("最底层 isDispatch: " + boolean2String(mTouchViewModel.getIsDispatch0()) + "\n" +
+                "最底层 isIntercept: " + boolean2String(mTouchViewModel.getIsIntercept0()) + "\n" +
+                "最底层 isHandleDownEvent: " + boolean2String(mTouchViewModel.getIsHandleDownEvent0()) + "\n" +
+                "中层 isDispatch: " + boolean2String(mTouchViewModel.getIsDispatch1()) + "\n" +
+                "中层 isIntercept: " + boolean2String(mTouchViewModel.getIsIntercept1()) + "\n" +
+                "中层 isHandleDownEvent: " + boolean2String(mTouchViewModel.getIsHandleDownEvent1()) + "\n" +
+                "最顶层 isDispatch: " + boolean2String(mTouchViewModel.getIsDispatch2()) + "\n" +
+                "最顶层 isHandleDownEvent: " + boolean2String(mTouchViewModel.getIsHandleDownEvent2()));
+    }
 
+    private String boolean2String(LiveData<Boolean> ld) {
+        return ld.getValue().toString();
     }
 
     @Override
