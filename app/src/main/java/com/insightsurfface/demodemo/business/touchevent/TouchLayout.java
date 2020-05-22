@@ -32,7 +32,7 @@ public class TouchLayout extends RelativeLayout {
         if (null != mTouchListener) {
             mTouchListener.dispatchTouchEvent(ev);
         }
-        return isDispatch;
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
@@ -52,16 +52,7 @@ public class TouchLayout extends RelativeLayout {
             mTouchListener.onTouchEvent(event);
         }
 //        return super.onTouchEvent(event);
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                return isHandleDownEvent;
-            case MotionEvent.ACTION_MOVE:
-                return false;
-            case MotionEvent.ACTION_UP:
-                return false;
-            default:
-                return true;
-        }
+        return isHandleDownEvent;
     }
 
     public void setTouchListener(TouchListener touchListener) {

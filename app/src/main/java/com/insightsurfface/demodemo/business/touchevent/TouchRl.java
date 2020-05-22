@@ -32,7 +32,8 @@ public class TouchRl extends RelativeLayout {
         if (null != mTouchListener) {
             mTouchListener.dispatchTouchEvent(ev);
         }
-        return isDispatch;
+        //dispatch方法是真正处理事件传递的方法这里的返回值本身是通过各种判断得出的,返回true代表该view已经处理事件
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
@@ -50,16 +51,7 @@ public class TouchRl extends RelativeLayout {
         if (null != mTouchListener) {
             mTouchListener.onTouchEvent(event);
         }
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                return isHandleDownEvent;
-            case MotionEvent.ACTION_MOVE:
-                return false;
-            case MotionEvent.ACTION_UP:
-                return false;
-            default:
-                return true;
-        }
+        return isHandleDownEvent;
     }
 
     public void setTouchListener(TouchListener touchListener) {

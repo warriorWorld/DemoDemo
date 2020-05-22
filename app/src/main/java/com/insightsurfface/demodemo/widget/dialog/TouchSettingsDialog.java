@@ -24,16 +24,16 @@ import com.insightsurfface.demodemo.listener.OnDialogClickListener;
  */
 public class TouchSettingsDialog extends Dialog {
     private Context context;
-    private CheckBox isDispatchCb0;
+//    private CheckBox isDispatchCb0;
     private CheckBox isInterceptCb0;
     private CheckBox isHandleDownEventCb0;
-    private CheckBox isDispatchCb1;
+//    private CheckBox isDispatchCb1;
     private CheckBox isInterceptCb1;
     private CheckBox isHandleDownEventCb1;
-    private CheckBox isDispatchCb2;
+//    private CheckBox isDispatchCb2;
     private CheckBox isHandleDownEventCb2;
+    private CheckBox isHandleDownEventCb3;
     private TouchViewModel mTouchViewModel;
-    private OnDialogClickListener mOnDialogClickListener;
 
     public TouchSettingsDialog(Context context) {
         super(context);
@@ -68,14 +68,15 @@ public class TouchSettingsDialog extends Dialog {
     }
 
     private void init() {
-        isDispatchCb0 = (CheckBox) findViewById(R.id.is_dispatch_cb0);
+//        isDispatchCb0 = (CheckBox) findViewById(R.id.is_dispatch_cb0);
         isInterceptCb0 = (CheckBox) findViewById(R.id.is_intercept_cb0);
         isHandleDownEventCb0 = (CheckBox) findViewById(R.id.is_handleDownEvent_cb0);
-        isDispatchCb1 = (CheckBox) findViewById(R.id.is_dispatch_cb1);
+//        isDispatchCb1 = (CheckBox) findViewById(R.id.is_dispatch_cb1);
         isInterceptCb1 = (CheckBox) findViewById(R.id.is_intercept_cb1);
         isHandleDownEventCb1 = (CheckBox) findViewById(R.id.is_handleDownEvent_cb1);
-        isDispatchCb2 = (CheckBox) findViewById(R.id.is_dispatch_cb2);
+//        isDispatchCb2 = (CheckBox) findViewById(R.id.is_dispatch_cb2);
         isHandleDownEventCb2 = (CheckBox) findViewById(R.id.is_handleDownEvent_cb2);
+        isHandleDownEventCb3 = (CheckBox) findViewById(R.id.is_handleDownEvent_cb3);
         setupListener();
     }
 
@@ -85,12 +86,12 @@ public class TouchSettingsDialog extends Dialog {
     }
 
     private void setupListener() {
-        isDispatchCb0.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mTouchViewModel.setIsDispatch0(isChecked);
-            }
-        });
+//        isDispatchCb0.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mTouchViewModel.setIsDispatch0(isChecked);
+//            }
+//        });
         isInterceptCb0.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -103,12 +104,12 @@ public class TouchSettingsDialog extends Dialog {
                 mTouchViewModel.setIsHandleDownEvent0(isChecked);
             }
         });
-        isDispatchCb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mTouchViewModel.setIsDispatch1(isChecked);
-            }
-        });
+//        isDispatchCb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mTouchViewModel.setIsDispatch1(isChecked);
+//            }
+//        });
         isInterceptCb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -121,22 +122,24 @@ public class TouchSettingsDialog extends Dialog {
                 mTouchViewModel.setIsHandleDownEvent1(isChecked);
             }
         });
-        isDispatchCb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mTouchViewModel.setIsDispatch2(isChecked);
-            }
-        });
+//        isDispatchCb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mTouchViewModel.setIsDispatch2(isChecked);
+//            }
+//        });
         isHandleDownEventCb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mTouchViewModel.setIsHandleDownEvent2(isChecked);
             }
         });
-    }
-
-    public void setOnDialogClickListener(OnDialogClickListener onDialogClickListener) {
-        mOnDialogClickListener = onDialogClickListener;
+        isHandleDownEventCb3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mTouchViewModel.setIsHandleDownEvent3(isChecked);
+            }
+        });
     }
 
     public void setTouchViewModel(TouchViewModel touchViewModel) {

@@ -13,6 +13,7 @@ public class TouchViewModel extends ViewModel {
     private MutableLiveData<Boolean> isHandleDownEvent0 = new MutableLiveData<>();
     private MutableLiveData<Boolean> isHandleDownEvent1 = new MutableLiveData<>();
     private MutableLiveData<Boolean> isHandleDownEvent2 = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isHandleDownEvent3 = new MutableLiveData<>();
 
     public void init() {
         isDispatch0.setValue(false);
@@ -92,5 +93,13 @@ public class TouchViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
+    }
+
+    public LiveData<Boolean> getIsHandleDownEvent3() {
+        return isHandleDownEvent3;
+    }
+
+    public void setIsHandleDownEvent3(boolean b) {
+        isHandleDownEvent3.setValue(b);
     }
 }
