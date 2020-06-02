@@ -25,6 +25,7 @@ import com.insightsurfface.demodemo.business.rxjava.RxjavaActivity;
 import com.insightsurfface.demodemo.business.state.StateActivity;
 import com.insightsurfface.demodemo.business.strategy.StrategyActivity;
 import com.insightsurfface.demodemo.business.template.TemplateActivity;
+import com.insightsurfface.demodemo.business.thread.ThreadSecurityActivity;
 import com.insightsurfface.demodemo.business.touchevent.TouchEventActivity;
 import com.insightsurfface.demodemo.business.visitor.VisitorActivity;
 import com.insightsurfface.demodemo.listener.OnRecycleItemClickListener;
@@ -126,6 +127,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 break;
                             case 17:
                                 intent= new Intent(MainActivity.this, RxjavaActivity.class);
+                                break;
+                            case 18:
+                                intent= new Intent(MainActivity.this, ThreadSecurityActivity.class);
                                 break;
                         }
                         if (null != intent) {

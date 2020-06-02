@@ -34,5 +34,6 @@
         <activity android:name=".business.factory.FactoryActivity"></activity>
         <activity android:name=".business.abstractfactory.AbstractFactoryActivity"></activity>
         <activity android:name=".business.rxjava.RxjavaActivity"></activity>
+        <activity android:name=".business.thread.ThreadSecurityActivity"></activity>
     </application>
 </manifest>
