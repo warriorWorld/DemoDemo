@@ -25,6 +25,8 @@ import com.insightsurfface.demodemo.business.rxjava.RxjavaActivity;
 import com.insightsurfface.demodemo.business.state.StateActivity;
 import com.insightsurfface.demodemo.business.strategy.StrategyActivity;
 import com.insightsurfface.demodemo.business.template.TemplateActivity;
+import com.insightsurfface.demodemo.business.test.TestActivity;
+import com.insightsurfface.demodemo.business.test.TestActivity1;
 import com.insightsurfface.demodemo.business.thread.ThreadSecurityActivity;
 import com.insightsurfface.demodemo.business.touchevent.TouchEventActivity;
 import com.insightsurfface.demodemo.business.visitor.VisitorActivity;
@@ -81,55 +83,61 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 intent = new Intent(MainActivity.this, BuilderActivity.class);
                                 break;
                             case 2:
-                                intent= new Intent(MainActivity.this, TouchEventActivity.class);
+                                intent = new Intent(MainActivity.this, TouchEventActivity.class);
                                 break;
                             case 3:
-                                intent= new Intent(MainActivity.this, StrategyActivity.class);
+                                intent = new Intent(MainActivity.this, StrategyActivity.class);
                                 break;
                             case 4:
-                                intent= new Intent(MainActivity.this, StateActivity.class);
+                                intent = new Intent(MainActivity.this, StateActivity.class);
                                 break;
                             case 5:
-                                intent= new Intent(MainActivity.this, ResponsibilityChainActivity.class);
+                                intent = new Intent(MainActivity.this, ResponsibilityChainActivity.class);
                                 break;
                             case 6:
-                                intent= new Intent(MainActivity.this, FragmentLifePeriodActivity.class);
+                                intent = new Intent(MainActivity.this, FragmentLifePeriodActivity.class);
                                 break;
                             case 7:
-                                intent= new Intent(MainActivity.this, CommandActivity.class);
+                                intent = new Intent(MainActivity.this, CommandActivity.class);
                                 break;
                             case 8:
-                                intent= new Intent(MainActivity.this, ObserverActivity.class);
+                                intent = new Intent(MainActivity.this, ObserverActivity.class);
                                 break;
                             case 9:
-                                intent= new Intent(MainActivity.this, TemplateActivity.class);
+                                intent = new Intent(MainActivity.this, TemplateActivity.class);
                                 break;
                             case 10:
-                                intent= new Intent(MainActivity.this, VisitorActivity.class);
+                                intent = new Intent(MainActivity.this, VisitorActivity.class);
                                 break;
                             case 11:
-                                intent= new Intent(MainActivity.this, MediatorActivity.class);
+                                intent = new Intent(MainActivity.this, MediatorActivity.class);
                                 break;
                             case 12:
-                                intent= new Intent(MainActivity.this, AgencyActivity.class);
+                                intent = new Intent(MainActivity.this, AgencyActivity.class);
                                 break;
                             case 13:
-                                intent= new Intent(MainActivity.this, AssemblyActivity.class);
+                                intent = new Intent(MainActivity.this, AssemblyActivity.class);
                                 break;
                             case 14:
-                                intent= new Intent(MainActivity.this, BridgeActivity.class);
+                                intent = new Intent(MainActivity.this, BridgeActivity.class);
                                 break;
                             case 15:
-                                intent= new Intent(MainActivity.this, FactoryActivity.class);
+                                intent = new Intent(MainActivity.this, FactoryActivity.class);
                                 break;
                             case 16:
-                                intent= new Intent(MainActivity.this, AbstractFactoryActivity.class);
+                                intent = new Intent(MainActivity.this, AbstractFactoryActivity.class);
                                 break;
                             case 17:
-                                intent= new Intent(MainActivity.this, RxjavaActivity.class);
+                                intent = new Intent(MainActivity.this, RxjavaActivity.class);
                                 break;
                             case 18:
-                                intent= new Intent(MainActivity.this, ThreadSecurityActivity.class);
+                                intent = new Intent(MainActivity.this, ThreadSecurityActivity.class);
+                                break;
+                            case 19:
+                                intent = new Intent(MainActivity.this, TestActivity.class);
+                                break;
+                            case 20:
+                                intent = new Intent(MainActivity.this, TestActivity1.class);
                                 break;
                         }
                         if (null != intent) {

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+  android:oneshot="false" >
+  <item
+      android:drawable="@drawable/bell1"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell2"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell3"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell4"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell5"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell6"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell7"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell8"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell9"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell10"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell11"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell12"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell13"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell14"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell15"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell16"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell17"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell18"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell19"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell20"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell21"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell22"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell23"
+      android:duration="83" />
+  <item
+      android:drawable="@drawable/bell24"
+      android:duration="83" />
+</animation-list>
