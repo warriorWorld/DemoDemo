@@ -59,7 +59,7 @@ public class TestActivity1 extends BaseActivity implements EasyPermissions.Permi
             // Already have permission, do the thing
             // ...
             Log.d(TAG, "unzipFile() called");
-            boolean ret = true;
+             ret = true;
             File file = new File(Environment
                     .getExternalStorageDirectory().getAbsolutePath() + File.separator + "aSpider" + File.separator + "dist.zip");
             if (file.exists()) {
