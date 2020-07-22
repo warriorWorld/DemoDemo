@@ -8,45 +8,45 @@
     android:background="#3C83D8">
 
     <ImageView
-        android:id="@+id/ani_waiting"
-        android:layout_width="422dp"
-        android:layout_height="185dp"
+        android:id="@+id/waiting_iv"
+        android:layout_width="635px"
+        android:layout_height="278px"
         android:layout_marginTop="91dp"
         android:background="@drawable/ic_waiting"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:layout_width="61dp"
-        android:layout_height="52dp"
-        app:layout_constraintLeft_toLeftOf="@+id/ani_waiting"
-        app:layout_constraintTop_toTopOf="@+id/ani_waiting"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginBottom="70dp"
-        android:indeterminate="false"
-        android:indeterminateDrawable="@drawable/ani_waiting" />
 
     <ImageView
         android:id="@+id/watch_hand_iv"
-        android:layout_width="16dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="125dp"
+        android:layout_width="24px"
+        android:layout_height="58px"
+        android:layout_marginTop="75px"
+        android:layout_marginRight="190px"
         android:src="@drawable/ic_watch_hand"
-        app:layout_constraintRight_toRightOf="@+id/ani_waiting"
-        app:layout_constraintTop_toTopOf="@+id/ani_waiting" />
+        app:layout_constraintRight_toRightOf="@+id/waiting_iv"
+        app:layout_constraintTop_toTopOf="@+id/waiting_iv" />
+
+    <ProgressBar
+        android:layout_width="122px"
+        android:layout_height="108px"
+        android:layout_marginLeft="70px"
+        android:layout_marginTop="100px"
+        android:indeterminate="false"
+        android:elevation="2dp"
+        android:indeterminateDrawable="@drawable/ani_waiting"
+        app:layout_constraintLeft_toLeftOf="@+id/waiting_iv"
+        app:layout_constraintTop_toTopOf="@+id/waiting_iv" />
 
     <TextView
         android:id="@+id/default_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="终于等到你，约1分30秒后加入PK吧！"
         android:textColor="#ffffffff"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ani_waiting" />
+        app:layout_constraintTop_toBottomOf="@+id/waiting_iv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
