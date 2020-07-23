@@ -5,7 +5,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.insightsurfface.demodemo"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     //mvvm
     implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation files('libs/zip4j_1.3.2.jar')
-    implementation 'pub.devrel:easypermissions:0.4.2'
-    implementation files('libs/universal-image-loader-1.9.5.jar')
+    implementation 'com.hzy:libp7zip:1.7.0'
 }
