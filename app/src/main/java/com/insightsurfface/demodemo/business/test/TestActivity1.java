@@ -6,11 +6,12 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hzy.libp7zip.P7ZipApi;
+import com.iceteck.silicompressorr.SiliCompressor;
 import com.insightsurfface.demodemo.R;
 import com.insightsurfface.demodemo.base.BaseActivity;
 
 import java.io.File;
+import java.net.URISyntaxException;
 
 import androidx.annotation.Nullable;
 
@@ -39,13 +40,31 @@ public class TestActivity1 extends BaseActivity {
     private void unzipFile() {
         Log.d(TAG, "unzipFile() called");
         ret = true;
-        File file = new File(Environment
-                .getExternalStorageDirectory().getAbsolutePath() + File.separator + "aSpider" + File.separator + "dist.zip");
-        File outFile = new File(Environment
-                .getExternalStorageDirectory().getAbsolutePath() + File.separator + "aSpider");
-        if (file.exists() && outFile.exists()) {
-            P7ZipApi.executeCommand(getExtractCmd(file.getPath(), outFile.getPath()));
-//            boolean delete = file.delete();
+        final File file = new File(Environment
+                .getExternalStorageDirectory().getAbsolutePath() + File.separator + "TV show" + File.separator + "test1.mp4");
+        final File outFile = new File(Environment
+                .getExternalStorageDirectory().getAbsolutePath() + File.separator + "aSpider" + File.separator);
+        final File finalFile = new File(Environment
+                .getExternalStorageDirectory().getAbsolutePath() + File.separator + "aSpider" + File.separator+"result.mp4");
+        if (file.exists()) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        String filePath = SiliCompressor.with(TestActivity1.this).compressVideo(file.getPath(), outFile.getPath());
+                        File file=new File(filePath);
+                        file.renameTo(finalFile);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                default_prompt.setText("压缩完成");
+                            }
+                        });
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
         }
     }
 
