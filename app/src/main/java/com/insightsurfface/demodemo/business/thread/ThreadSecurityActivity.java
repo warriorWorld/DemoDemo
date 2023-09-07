@@ -10,14 +10,16 @@ import com.insightsurfface.demodemo.base.BaseActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import androidx.annotation.Nullable;
 
 public class ThreadSecurityActivity extends BaseActivity implements View.OnClickListener {
-    private int i0 = 0;
-    private volatile int i1 = 0;
+    private static int i0 = 0;
+    private static volatile int i1 = 0;
     private int i2 = 0;
-    private int i3 = 0;
+    private volatile int i3 = 0;
+    private volatile AtomicInteger i4=new AtomicInteger(0);
     private ExecutorService mExecutorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private TextView resultTv;
     private Button okBtn;
@@ -31,6 +33,7 @@ public class ThreadSecurityActivity extends BaseActivity implements View.OnClick
                     i1++;
                     addI2();
                     addI3();
+                    i4.getAndIncrement();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -54,7 +57,8 @@ public class ThreadSecurityActivity extends BaseActivity implements View.OnClick
         StringBuilder sb = new StringBuilder();
         sb.append("normal: ").append(i0).append("\nvolatile: ")
                 .append(i1).append("\nsynchronized: ").append(i2)
-                .append("\nvolatile&synchronized: ").append(i3);
+                .append("\nvolatile&synchronized: ").append(i3)
+                .append("\nvolatile+atomic int: ").append(i4);
         resultTv.setText(sb);
     }
 
