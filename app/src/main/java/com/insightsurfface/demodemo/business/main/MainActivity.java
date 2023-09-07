@@ -21,6 +21,7 @@ import com.insightsurfface.demodemo.business.factory.FactoryActivity;
 import com.insightsurfface.demodemo.business.fragmentlife.FragmentLifePeriodActivity;
 import com.insightsurfface.demodemo.business.mediator.MediatorActivity;
 import com.insightsurfface.demodemo.business.observer.ObserverActivity;
+import com.insightsurfface.demodemo.business.pcm.PcmConvertActivity;
 import com.insightsurfface.demodemo.business.responsibilitychain.ResponsibilityChainActivity;
 import com.insightsurfface.demodemo.business.rxjava.RxjavaActivity;
 import com.insightsurfface.demodemo.business.state.StateActivity;
@@ -138,6 +139,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                                 intent = new Intent(MainActivity.this, TestActivity.class);
                                 break;
                             case 20:
+                                intent=new Intent(MainActivity.this, PcmConvertActivity.class);
+                                break;
+                            case 21:
                                 intent = new Intent(MainActivity.this, DoodleActivity.class);
                                 break;
                         }

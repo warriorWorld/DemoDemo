@@ -43,6 +43,7 @@
         <activity android:name=".business.rxjava.RxjavaActivity"></activity>
         <activity android:name=".business.thread.ThreadSecurityActivity"></activity>
         <activity android:name=".business.doodle.DoodleActivity"></activity>
+        <activity android:name=".business.pcm.PcmConvertActivity"></activity>
         <activity
             android:name=".business.test.TestActivity"
             android:screenOrientation="landscape"></activity>
